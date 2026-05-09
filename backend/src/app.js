@@ -1,0 +1,42 @@
+import express from "express";
+import cors from "cors";
+import helmet from "helmet";
+import morgan from "morgan";
+import compression from "compression";
+import cookieParser from "cookie-parser";
+import errorMiddleware from "./middlewares/errorMiddleware.js";
+import authRoutes from "./modules/auth/auth.routes.js";
+import protect from "./middlewares/authMiddleware.js";
+const app = express();
+
+app.use(express.json());
+app.use(cookieParser());
+app.use(cors());
+
+app.use(helmet());
+
+app.use(compression());
+
+app.use(morgan("dev"));
+
+app.get("/", (req, res) => {
+  res.json({
+    success: true,
+    message: "API Running",
+  });
+});
+app.get(
+  "/api/v1/protected",
+  protect,
+  (req, res) => {
+    res.json({
+      success: true,
+      message:
+        "Protected route accessed",
+      user: req.user,
+    });
+  }
+);
+app.use(errorMiddleware);
+app.use("/api/v1/auth", authRoutes);
+export default app;
