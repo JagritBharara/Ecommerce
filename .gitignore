@@ -1,0 +1,26 @@
+# dependencies
+node_modules/
+
+# env
+.env
+.env.*
+
+# logs
+logs
+*.log
+
+# macOS
+.DS_Store
+
+# build
+dist/
+build/
+
+# docker
+docker-data/
+
+# vscode
+.vscode/
+
+# coverage
+coverage/
