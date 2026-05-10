@@ -43,7 +43,10 @@ services:
 
   mongodb:
     image: mongo:7
+
     container_name: ecommerce-mongodb
+
+    command: ["mongod", "--replSet", "rs0"]
 
     ports:
       - "27017:27017"
