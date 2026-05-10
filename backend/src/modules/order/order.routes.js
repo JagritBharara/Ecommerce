@@ -5,6 +5,8 @@ import adminOnly from "../../middlewares/adminMiddleware.js";
 import {
   createOrder,
   getMyOrders,
+  getAllOrders,
+  updateOrderStatus,
 } from "./order.controller.js";
 
 const router = express.Router();

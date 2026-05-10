@@ -201,3 +201,17 @@ export const refreshAccessToken =
       )
     );
   });
+
+
+  export const getMe =
+  asyncHandler(async (req, res) => {
+
+    return res.status(200).json(
+
+      new ApiResponse(
+        200,
+        "User fetched successfully",
+        req.user
+      )
+    );
+  });
